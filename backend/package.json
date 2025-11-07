@@ -1,0 +1,20 @@
+{
+  "name": "mekkompis-backend",
+  "version": "1.0.0",
+  "description": "Backend f�r Mekkompis motorcykel-loggbok",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": ["motorcykel", "mek", "loggbok"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "better-sqlite3": "^9.2.2",
+    "multer": "^2.0.0"
+  }
+}
