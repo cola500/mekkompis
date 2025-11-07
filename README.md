@@ -111,6 +111,8 @@ Appen körs lokalt och all data sparas på din dator.
 
 ## Deployment till Inleed.se
 
+> **⚠️ OBS:** Denna deployment-guide är inte testad i produktion ännu. Använd den som utgångspunkt och var beredd på att behöva göra justeringar baserat på din specifika hosting-miljö.
+
 Mekkompis kan deployas till Inleed.se (eller liknande webbhotell med Node.js-stöd). Här är stegen:
 
 ### Förberedelser
