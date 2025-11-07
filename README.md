@@ -42,6 +42,14 @@ En personlig mek-loggbok för din motorcykel där du kan dokumentera underhåll,
 - Loading states under API-anrop
 - Visuell feedback vid hover och fokus
 
+**Säkerhet**
+- JWT-autentisering (optional, aktiveras i produktion)
+- CORS-skydd - begränsar tillåtna origins
+- Path traversal-skydd i file uploads
+- Saniterade filnamn
+- Prepared statements för databas-queries (SQL injection-skydd)
+- React's auto-escaping (XSS-skydd)
+
 ## Tech Stack
 
 ### Frontend
@@ -202,7 +210,21 @@ NODE_ENV=production
 
 # Paths
 UPLOAD_DIR=/path/to/uploads
+
+# CORS - Dina domäner (komma-separerade)
+ALLOWED_ORIGINS=https://mekkompis.inleed.se,https://www.mekkompis.inleed.se
+
+# Autentisering (VIKTIGT för säkerhet i produktion!)
+# Generera JWT secret:
+# node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+JWT_SECRET=din_jwt_secret_här
+
+# Generera lösenordshash:
+# node backend/hash-password.js DittLösenordHär
+AUTH_PASSWORD_HASH=din_bcrypt_hash_här
 ```
+
+**Viktigt:** Generera starka secrets och lösenord! Se stegen i kommentarerna ovan.
 
 #### 3. Uppdatera backend för MySQL
 Modifiera `backend/src/db.js` för att stödja MySQL:
@@ -410,6 +432,14 @@ Ett Claude Code slash command för att granska appens säkerhet inför deploymen
 - Bildhantering: lightbox och radera bilder
 - Förbättrad tillgänglighet (ARIA, tangentbordsnavigation)
 - Loading states och visuell feedback
+
+**Säkerhetsförbättringar:**
+- JWT-autentisering (optional för lokal utveckling)
+- CORS-konfiguration - begränsar tillåtna origins
+- Path traversal-skydd i file uploads
+- Saniterade filnamn för uppladdningar
+- Prepared statements (SQL injection-skydd)
+- Helper script för lösenordsgenerering
 
 ### v0.2
 - Hantera flera motorcyklar

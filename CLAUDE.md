@@ -21,6 +21,14 @@ Mekkompis är en personlig mek-loggbok för motorcyklar där användare kan doku
 - ✅ Förbättrad tillgänglighet (ARIA, tangentbordsnavigation)
 - ✅ Loading states
 
+**Säkerhet:**
+- ✅ JWT-autentisering (optional, aktiveras i produktion)
+- ✅ CORS-konfiguration för tillåtna origins
+- ✅ Path traversal-skydd i file uploads
+- ✅ Saniterade filnamn
+- ✅ Prepared statements (SQL injection-skydd)
+- ✅ Helper script för lösenordsgenerering (backend/hash-password.js)
+
 ## Projektmål
 - **Primärt mål**: Enkel, användbar app för att dokumentera motorcykel-underhåll
 - **Sekundärt mål**: Lätt att deploya till befintligt webbhotell (www.inleed.se)

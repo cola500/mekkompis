@@ -1,8 +1,10 @@
 import express from 'express';
 import multer from 'multer';
 import { queries } from './db.js';
+import { login, verifyToken, getAuthStatus } from './auth.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import path from 'path';
 import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -10,10 +12,31 @@ const __dirname = dirname(__filename);
 
 const router = express.Router();
 
+// ========== AUTHENTICATION ENDPOINTS ==========
+
+// Login
+router.post('/auth/login', login);
+
+// Verify token
+router.get('/auth/verify', verifyToken);
+
+// Check auth status
+router.get('/auth/status', getAuthStatus);
+
 // Setup multer for file uploads
 const uploadDir = join(__dirname, '../../uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+// Sanitize filename to prevent path traversal attacks
+function sanitizeFilename(filename) {
+  // Remove path separators and parent directory references
+  return filename
+    .replace(/[/\\]/g, '') // Remove slashes
+    .replace(/\.\./g, '')   // Remove parent directory references
+    .replace(/[^a-zA-Z0-9._-]/g, '_') // Replace special chars with underscore
+    .substring(0, 255); // Limit length
 }
 
 const storage = multer.diskStorage({
@@ -21,8 +44,14 @@ const storage = multer.diskStorage({
     cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
+    const sanitized = sanitizeFilename(file.originalname);
+    const ext = path.extname(sanitized).toLowerCase();
+    const basename = path.basename(sanitized, ext);
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + '-' + file.originalname);
+
+    // Create safe filename: timestamp-random-sanitizedname.ext
+    const safeFilename = `${uniqueSuffix}-${basename}${ext}`;
+    cb(null, safeFilename);
   }
 });
 
