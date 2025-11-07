@@ -87,7 +87,27 @@ En personlig mek-loggbok för din motorcykel där du kan dokumentera underhåll,
 ### Krav
 - Node.js (v18 eller senare)
 
-### Installation
+### Snabbstart (rekommenderat)
+
+**Starta appen:**
+```bash
+./start.sh
+```
+
+Detta script:
+- Installerar automatiskt dependencies om de saknas
+- Startar backend (http://localhost:3000)
+- Startar frontend (http://localhost:5173)
+- Kan stoppas med Ctrl+C
+
+**Stoppa appen:**
+```bash
+./stop.sh
+```
+
+### Manuell installation (alternativ)
+
+Om du föredrar att starta backend och frontend separat:
 
 1. Installera backend:
 ```bash
