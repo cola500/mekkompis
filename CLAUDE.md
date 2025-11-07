@@ -149,6 +149,31 @@ Ett specialiserat slash command för att granska appens användarvänlighet och 
 
 Agenten läser automatiskt frontend-koden och ger en strukturerad rapport med prioriterade rekommendationer.
 
+### Security-review (`/security-review`)
+Ett specialiserat slash command för att granska appens säkerhet inför deployment.
+
+**Vad det gör:**
+- Analyserar både backend och frontend för säkerhetsbrister
+- Kollar mot OWASP Top 10 (Injection, XSS, CSRF, etc.)
+- Granskar file upload security, authentication och API-säkerhet
+- Identifierar hardcoded secrets och environment variable-problem
+- Kontrollerar databas-queries för SQL injection
+- Ger prioriterade rekommendationer: 🔴 Kritisk | 🟠 Hög | 🟡 Medel | 🟢 Låg
+
+**När ska du använda det:**
+- **ALLTID innan deployment till produktion**
+- Efter att ha lagt till nya features som hanterar user input
+- När du implementerat file uploads eller API endpoints
+- Innan du öppnar appen för allmänheten
+- Vid regelbundna säkerhetsgranskningar
+
+**Hur:**
+```
+/security-review
+```
+
+Agenten läser backend- och frontend-koden och ger en detaljerad säkerhetsrapport med konkreta fixar och kod-exempel.
+
 ## Debugging
 - Backend körs på: http://localhost:3000
 - Frontend körs på: http://localhost:5173

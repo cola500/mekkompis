@@ -382,6 +382,23 @@ Ett Claude Code slash command för att granska appens användarvänlighet.
 
 Detta är särskilt användbart efter större UI-ändringar eller innan release av ny version.
 
+#### Security-review (`/security-review`)
+Ett Claude Code slash command för att granska appens säkerhet inför deployment.
+
+**Vad det gör:**
+- Analyserar både backend och frontend för säkerhetsbrister
+- Kollar mot OWASP Top 10
+- Identifierar SQL injection, XSS, CSRF och andra sårbarheter
+- Granskar file upload security, authentication och API-säkerhet
+- Ger prioriterade rekommendationer med kod-exempel
+
+**Användning:**
+```
+/security-review
+```
+
+**VIKTIGT:** Kör alltid denna innan du deployer appen till produktion!
+
 ## Versionshistorik
 
 ### v0.3 (Aktuell)
