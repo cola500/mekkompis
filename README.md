@@ -125,13 +125,27 @@ npm run dev
 
 3. Öppna http://localhost:5173 i din webbläsare
 
-## Struktur
+## Projekt i detta repo
+
+Detta repository innehåller två separata projekt:
+
+### 1. Mekkompis (huvudprojekt)
+En personlig mek-loggbok för motorcyklar. Se instruktioner nedan.
+
+### 2. Busschema-app
+En Västtrafik busstider-app för Raspberry Pi med pekskärm.
+- **Plats:** `/busschema-app/`
+- **Dokumentation:** Se `busschema-app/README.md`
+- **Snabbstart:** Se `busschema-app/QUICKSTART.md`
+
+## Struktur (Mekkompis)
 ```
 mekkompis/
 ├── backend/          # Express API server
 ├── frontend/         # React frontend
 ├── database/         # SQLite databas
-└── uploads/          # Uppladdade bilder
+├── uploads/          # Uppladdade bilder
+└── busschema-app/    # Separat projekt (Västtrafik busstider)
 ```
 
 ## Utveckling

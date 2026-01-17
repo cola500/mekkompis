@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busschema - Betaniagatan</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🚌 Betaniagatan</h1>
+      <div class="clock" id="clock"></div>
+    </header>
+
+    <div class="search-section">
+      <input
+        type="text"
+        id="stopSearch"
+        placeholder="Sök hållplats (t.ex. Betaniagatan)"
+        class="search-input"
+      >
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <main class="departures-container">
+      <div id="loading" class="loading">Laddar avgångar...</div>
+      <div id="error" class="error" style="display: none;"></div>
+      <div id="departures" class="departures-list"></div>
+    </main>
+
+    <footer class="footer">
+      <button id="refreshBtn" class="refresh-btn">🔄 Uppdatera</button>
+      <span id="lastUpdate" class="last-update"></span>
+    </footer>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
